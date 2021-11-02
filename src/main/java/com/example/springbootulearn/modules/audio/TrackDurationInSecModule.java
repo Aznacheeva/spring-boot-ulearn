@@ -42,6 +42,6 @@ public class TrackDurationInSecModule extends AbstractAudioModule{
     }
     private void printSongDuration(Metadata metadata) {
         String dur = metadata.get("xmpDM:duration");
-        System.out.printf("Duration: %s seconds.%n",dur.substring(0, dur.indexOf('.')));
+        System.out.printf("Длительность трека: %s секунд \n",dur.substring(0, dur.indexOf('.')));
     }
 }

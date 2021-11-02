@@ -8,13 +8,15 @@ import org.springframework.stereotype.Service;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Map;
+import java.util.Scanner;
 
 @Service
 public class FileService {
-    public void executeFunction(String filename) throws FileNotFoundException {
+    public void executeFunction(String filename) {
         File file = new File(filename);
         if (!file.exists()) {
-            throw new FileNotFoundException();
+            System.out.println("Файл не найден");
+            return;
         }
         ApplicationContext context = new AnnotationConfigApplicationContext("com.example.springbootulearn.modules");
         Module[] modules = getAvailableModules(file, context);
@@ -30,18 +32,13 @@ public class FileService {
     private int askUserForNumberOfFunction(int max) {
         while (true) {
             System.out.printf("Введите номер функции (%d-%d): ", 1, max);
-            String input = System.console().readLine();
-            int number;
-            try {
-                number = Integer.parseInt(input.strip());
-                if (number < 1 || number > max) {
-                    System.out.println("Некорректный ввод");
-                    continue;
-                }
-                return number;
-            } catch (NumberFormatException exception) {
+            Scanner scanner = new Scanner(System.in);
+            int number = scanner.nextInt();
+            if (number < 1 || number > max) {
                 System.out.println("Некорректный ввод");
+                continue;
             }
+            return number;
         }
     }
 

@@ -6,6 +6,7 @@ import org.apache.tika.metadata.Metadata;
 import org.apache.tika.parser.ParseContext;
 import org.apache.tika.parser.Parser;
 import org.apache.tika.parser.mp3.Mp3Parser;
+import org.springframework.stereotype.Component;
 import org.xml.sax.ContentHandler;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -14,6 +15,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Locale;
 
+@Component
 public class MetadataOfAudioModule extends AbstractAudioModule{
     @Override
     public String describeFunction() {
@@ -40,7 +42,7 @@ public class MetadataOfAudioModule extends AbstractAudioModule{
     }
     private void printFullInformation(Metadata metadata) {
         String[] metadataNames = metadata.names();
-        System.out.println("Metadata of the song:");
+        System.out.println("Метаданные трека:");
         System.out.println("----------------------------");
         for (String name : metadataNames) {
             System.out.println(name + ": " + metadata.get(name));

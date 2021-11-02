@@ -7,29 +7,24 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.PropertySource;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Scanner;
 
 @SpringBootApplication
 @PropertySource("classpath:application.properties")
-public class SpringBootUlearnApplication implements CommandLineRunner {
-	@Autowired
-	FileService fileService;
+public class SpringBootUlearnApplication {
+	//private static FileService fileService;
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringBootUlearnApplication.class, args);
-	}
-
-	@Override
-	public void run(String... args) {
-		if (args.length != 1) {
-			System.out.println("Неверное количество аргументов");
-			System.out.println("Введите имя файла");
-			return;
-		}
-		try {
-			fileService.executeFunction(args[0]);
-		} catch (FileNotFoundException e) {
-			System.out.println("Файл не найден");
+		//SpringApplication.run(SpringBootUlearnApplication.class, args);
+		while (true) {
+			Scanner scanner = new Scanner(System.in);
+			System.out.println("-----------------------------------------------------");
+			System.out.println("Введите имя файла: ");
+			String fileName = scanner.nextLine();
+			FileService fileService = new FileService();
+			fileService.executeFunction(fileName);
 		}
 	}
 }
