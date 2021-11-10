@@ -1,9 +1,12 @@
 package com.example.springbootulearn.modules.directory;
 
+import org.springframework.stereotype.Component;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 
+@Component
 public class LargestFileModule extends AbstractDirectoryModule {
     @Override
     public String describeFunction() {
