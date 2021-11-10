@@ -14,10 +14,8 @@ import java.util.Scanner;
 @SpringBootApplication
 @PropertySource("classpath:application.properties")
 public class SpringBootUlearnApplication {
-	//private static FileService fileService;
 
 	public static void main(String[] args) {
-		//SpringApplication.run(SpringBootUlearnApplication.class, args);
 		while (true) {
 			Scanner scanner = new Scanner(System.in);
 			System.out.println("-----------------------------------------------------");
